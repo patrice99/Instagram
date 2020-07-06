@@ -12,8 +12,8 @@ public class ParseApplication extends Application {
         // clientKey is not needed unless explicitly configured
         // any network interceptors must be added with the Configuration Builder given this syntax
         Parse.initialize(new Parse.Configuration.Builder(this)
-                .applicationId(String.valueOf(R.string.APP_ID)) // should correspond to APP_ID env variable
-                .clientKey(String.valueOf(R.string.MASTER_KEY))  // set explicitly unless clientKey is explicitly configured on Parse server
-                .server(String.valueOf(R.string.SERVER_URL)).build());
+                .applicationId(getString(R.string.APP_ID)) // should correspond to APP_ID env variable
+                .clientKey(getString(R.string.MASTER_KEY))  // set explicitly unless clientKey is explicitly configured on Parse server
+                .server(getString(R.string.SERVER_URL)).build());
     }
 }
