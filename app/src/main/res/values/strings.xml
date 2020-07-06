@@ -3,4 +3,8 @@
     <string name="username">Username</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
+    <string name="take_a_picture">Take a Picture</string>
+    <string name="description">Description...</string>
+    <string name="posted_image">Posted Image</string>
+    <string name="submit">Submit</string>
 </resources>
