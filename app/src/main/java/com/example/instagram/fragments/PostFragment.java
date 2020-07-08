@@ -54,7 +54,7 @@ public class PostFragment extends Fragment {
     }
 
     //Take the posts we have and hand it over to the adapter
-    private void queryPosts() {
+    protected void queryPosts() {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         query.include(Post.KEY_USER);
         query.setLimit(20);
