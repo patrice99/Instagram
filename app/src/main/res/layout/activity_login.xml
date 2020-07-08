@@ -10,7 +10,7 @@
     tools:context=".activities.LoginActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/igLogo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/instagramlogo"
@@ -58,7 +58,7 @@
             android:id="@+id/tvNew"
             android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="75"
+            android:layout_marginStart="75dp"
             android:text="@string/dont_have_an_account"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
