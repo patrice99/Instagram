@@ -26,8 +26,8 @@ import java.util.List;
 public class PostFragment extends Fragment {
     private static final String TAG = "PostFragment";
     private RecyclerView rvPosts;
-    private PostAdapter adapter;
-    private List<Post> allPosts;
+    protected PostAdapter adapter;
+    protected List<Post> allPosts;
 
     @Nullable
     @Override
