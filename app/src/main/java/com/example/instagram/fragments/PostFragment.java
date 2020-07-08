@@ -49,21 +49,7 @@ public class PostFragment extends Fragment {
 
         //set the layout manager on the recycler view
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        // Steps to use a recycler view
-        // 0. create layout for one row in the lise
-        // 1. create the adapter
-        // 2. create the data source
-        // 3. set the adapter on the recycler view m
-        // 4. set the layout manager on the recycler view
-
-
-
         queryPosts();
-
-
-
-
 
     }
 
@@ -82,7 +68,8 @@ public class PostFragment extends Fragment {
                 for(Post post: posts){
                     Log.i(TAG, "Post: " + post.getDescription() + " Username: " + post.getUser().getUsername());
                 }
-
+                allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
             }
         });
     }
