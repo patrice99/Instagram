@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.instagram.R;
@@ -40,7 +41,14 @@ public class PostFragment extends Fragment {
         rvPosts = view.findViewById(R.id.rvPosts);
 
         allPosts = new ArrayList<>();
+        //instantiate the adapter
         adapter = new PostAdapter(getContext(), allPosts);
+
+        //set the adapter on the recycler view
+        rvPosts.setAdapter(adapter);
+
+        //set the layout manager on the recycler view
+        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // Steps to use a recycler view
         // 0. create layout for one row in the lise
