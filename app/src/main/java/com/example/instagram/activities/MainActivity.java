@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import com.example.instagram.R;
 import com.example.instagram.fragments.ComposeFragment;
 import com.example.instagram.fragments.PostFragment;
+import com.example.instagram.fragments.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,17 +33,14 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        //TODO: Update Fragment
                         fragment = new PostFragment();
                         break;
                     case R.id.action_compose:
                         fragment = new ComposeFragment();
                         break;
                     case R.id.action_profile:
-                        //TODO: Update fragment
-                        fragment = new ComposeFragment();
                     default:
-                        fragment = new ComposeFragment();
+                        fragment = new ProfileFragment();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
