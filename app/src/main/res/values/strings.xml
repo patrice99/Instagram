@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Instagram</string>
     <string name="username">username</string>
-    <string name="login">Login</string>
+    <string name="login">Log in</string>
     <string name="password">password</string>
     <string name="take_a_picture">Take a Picture</string>
     <string name="description">Description...</string>
@@ -11,4 +11,6 @@
     <string name="home">Home</string>
     <string name="compose">Compose</string>
     <string name="profile">Profile</string>
+    <string name="new_sign_up">New? SIGN UP</string>
+    <string name="instagramlogo">InstagramLogo</string>
 </resources>

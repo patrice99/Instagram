@@ -12,13 +12,15 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:contentDescription="@string/instagramlogo"
+        android:tint="#000000"
         app:srcCompat="@drawable/nav_logo_whiteout" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:autofillHints=""
         android:ems="10"
@@ -29,6 +31,7 @@
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:layout_weight="1"
         android:autofillHints=""
         android:ems="10"
@@ -39,7 +42,19 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#03A9F4"
+        android:text="@string/login"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/btnSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="@string/login" />
+        android:backgroundTint="#4CAF50"
+        android:text="@string/new_sign_up"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
