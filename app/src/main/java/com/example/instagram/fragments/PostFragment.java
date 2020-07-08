@@ -12,17 +12,21 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.instagram.R;
+import com.example.instagram.adapters.PostAdapter;
 import com.example.instagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class PostFragment extends Fragment {
     private static final String TAG = "PostFragment";
     private RecyclerView rvPosts;
+    private PostAdapter adapter;
+    private List<Post> allPosts;
 
     @Nullable
     @Override
@@ -34,6 +38,9 @@ public class PostFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvPosts = view.findViewById(R.id.rvPosts);
+
+        allPosts = new ArrayList<>();
+        adapter = new PostAdapter(getContext(), allPosts);
 
         // Steps to use a recycler view
         // 0. create layout for one row in the lise
