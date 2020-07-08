@@ -11,6 +11,7 @@
     <string name="home">Home</string>
     <string name="compose">Compose</string>
     <string name="profile">Profile</string>
-    <string name="new_sign_up">New? SIGN UP</string>
     <string name="instagramlogo">InstagramLogo</string>
+    <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">SIGN UP</string>
 </resources>
