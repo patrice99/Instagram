@@ -63,6 +63,15 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                //when a post is clicked
+                @Override
+                public void onClick(View view) {
+                    //go to Details Activity
+                    //pass info from that post into Details Activity
+
+                }
+            });
         }
 
         public void bind(Post post){
@@ -90,4 +99,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         posts.addAll(list);
         notifyDataSetChanged();
     }
+
+
 }
