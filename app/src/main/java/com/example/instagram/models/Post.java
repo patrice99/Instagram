@@ -7,6 +7,9 @@ import com.parse.ParseUser;
 
 import org.parceler.Parcel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @ParseClassName("Post")
 public class Post extends ParseObject {
     public static final String KEY_DESCRIPTION = "description";
@@ -14,9 +17,6 @@ public class Post extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_AT = "createdAt";
 
-    //empty constructor for Parceler Library
-    public Post(){
-    }
 
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
@@ -44,4 +44,10 @@ public class Post extends ParseObject {
     }
 
 
+    public String getTimeStamp() {
+        Date date = getCreatedAt();
+        SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy hh:mm aa");
+        String strDate= formatter.format(date);
+        return strDate;
+    }
 }
