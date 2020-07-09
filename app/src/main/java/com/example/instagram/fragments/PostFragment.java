@@ -1,6 +1,7 @@
 package com.example.instagram.fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +60,14 @@ public class PostFragment extends Fragment {
             public void onRefresh() {
                 //get latest 20 Instagram items
                 queryPosts();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Stop animation (This will be after 3 seconds)
+                        swipeContainer.setRefreshing(false);
+                    }
+                }, 2000); //Delay in millis
+
             }
         });
 
@@ -87,6 +96,7 @@ public class PostFragment extends Fragment {
                 for(Post post: posts){
                     Log.i(TAG, "Post: " + post.getDescription() + " Username: " + post.getUser().getUsername());
                 }
+                allPosts.clear();
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }
