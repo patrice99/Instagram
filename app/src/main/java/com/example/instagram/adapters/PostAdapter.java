@@ -2,7 +2,6 @@ package com.example.instagram.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.gesture.GestureLibraries;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +17,6 @@ import com.example.instagram.R;
 import com.example.instagram.activities.PostDetailsActivity;
 import com.example.instagram.models.Post;
 import com.parse.ParseFile;
-
-import org.parceler.Parcels;
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -66,7 +62,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             //find the views
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
-            tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvDescription = itemView.findViewById(R.id.tvUsername);
             itemView.setOnClickListener(new View.OnClickListener() {
                 //when a post is clicked
                 @Override

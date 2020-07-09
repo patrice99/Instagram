@@ -63,7 +63,7 @@ public class PostFragment extends Fragment {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        // Stop animation (This will be after 3 seconds)
+                        // Stop animation (This will be after 2 seconds)
                         swipeContainer.setRefreshing(false);
                     }
                 }, 2000); //Delay in millis
@@ -98,7 +98,6 @@ public class PostFragment extends Fragment {
                 }
                 allPosts.clear();
                 allPosts.addAll(posts);
-                adapter.notifyDataSetChanged();
             }
         });
     }
