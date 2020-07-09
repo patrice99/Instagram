@@ -1,11 +1,11 @@
 package com.example.instagram.models;
 
+import com.parse.FindCallback;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import org.parceler.Parcel;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -49,5 +49,17 @@ public class Post extends ParseObject {
         SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy hh:mm aa");
         String strDate= formatter.format(date);
         return strDate;
+    }
+
+    public static void query(int page, int limit, ParseUser filterForUser, FindCallback callback){
+        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+        query.include(Post.KEY_USER);
+        if(filterForUser != null) {
+            query.whereEqualTo(Post.KEY_USER, filterForUser);
+        }
+        query.setLimit(limit);
+        query.setSkip(page * limit);
+        query.addDescendingOrder(Post.KEY_CREATED_AT);
+        query.findInBackground(callback);
     }
 }
