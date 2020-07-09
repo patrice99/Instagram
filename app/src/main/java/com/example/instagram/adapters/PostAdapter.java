@@ -1,7 +1,9 @@
 package com.example.instagram.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.gesture.GestureLibraries;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.instagram.R;
+import com.example.instagram.activities.PostDetailsActivity;
 import com.example.instagram.models.Post;
 import com.parse.ParseFile;
 
@@ -67,8 +70,17 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 //when a post is clicked
                 @Override
                 public void onClick(View view) {
-                    //go to Details Activity
+                    //get post position
+                    int position = getAdapterPosition();
+
+                    //get post at that position
+                    Post post = posts.get(position);
+                    Log.i(PostAdapter.class.getSimpleName(), "Post at Position " + position + "clicked.");
+                    //go to PostDetails Activity
+                    Intent intent = new Intent(context, PostDetailsActivity.class);
                     //pass info from that post into Details Activity
+                    //intent.putExtra("post", Parcels.wrap(post));
+                    context.startActivity(intent);
 
                 }
             });
