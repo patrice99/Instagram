@@ -20,32 +20,19 @@ import java.util.List;
 
 public class ProfileFragment extends PostFragment {
 
-    ParseUser user = ParseUser.getCurrentUser();
-
-
     public static final String TAG = "ProfileFragment";
+
+    // DRY
+    // dont repeat yourself
+
     @Override
-    protected void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.whereEqualTo(Post.KEY_USER, ParseUser.getCurrentUser());
-        query.setLimit(20);
-        query.addDescendingOrder(Post.KEY_CREATED_AT);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if (e != null){
-                    Log.e(TAG, "Issue with getting posts", e);
-                    return;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        filterForUser = ParseUser.getCurrentUser();
+        super.onCreate(savedInstanceState);
+    }
 
-                }
-                for(Post post: posts){
-                    Log.i(TAG, "Post: " + post.getDescription() + " Username: " + post.getUser().getUsername());
-                }
-                allPosts.addAll(posts);
-                adapter.notifyDataSetChanged();
-            }
-        });
-
+    @Override
+    protected void queryPosts(int page) {
+        super.queryPosts(page);
     }
 }
