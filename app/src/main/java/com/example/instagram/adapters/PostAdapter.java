@@ -19,6 +19,7 @@ import com.example.instagram.activities.PostDetailsActivity;
 import com.example.instagram.models.Post;
 import com.parse.ParseFile;
 
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.util.List;
@@ -79,7 +80,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     //go to PostDetails Activity
                     Intent intent = new Intent(context, PostDetailsActivity.class);
                     //pass info from that post into Details Activity
-                    //intent.putExtra("post", Parcels.wrap(post));
+                    intent.putExtra("post", post);
                     context.startActivity(intent);
 
                 }
