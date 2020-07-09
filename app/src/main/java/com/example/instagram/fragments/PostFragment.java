@@ -14,12 +14,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.example.instagram.EndlessRecyclerViewScrollListener;
 import com.example.instagram.R;
 import com.example.instagram.adapters.PostAdapter;
 import com.example.instagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,9 @@ public class PostFragment extends Fragment {
     protected PostAdapter adapter;
     protected List<Post> allPosts;
     private SwipeRefreshLayout swipeContainer;
+    private EndlessRecyclerViewScrollListener scrollListener;
+    private static final int DISPLAY_LIMIT = 20;
+    protected ParseUser filterForUser;
 
     @Nullable
     @Override
@@ -51,15 +56,16 @@ public class PostFragment extends Fragment {
         rvPosts.setAdapter(adapter);
 
         //set the layout manager on the recycler view
-        rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
-        queryPosts();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rvPosts.setLayoutManager(linearLayoutManager);
+        queryPosts(0);
 
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 //get latest 20 Instagram items
-                queryPosts();
+                queryPosts(0);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -77,15 +83,19 @@ public class PostFragment extends Fragment {
                 android.R.color.holo_red_light);
 
 
+        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+            @Override
+            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+                //get the next 20 posts
+                queryPosts(page);
+            }
+        };
+        rvPosts.addOnScrollListener(scrollListener);
     }
 
     //Take the posts we have and hand it over to the adapter
-    protected void queryPosts() {
-        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
-        query.include(Post.KEY_USER);
-        query.setLimit(20);
-        query.addDescendingOrder(Post.KEY_CREATED_AT);
-        query.findInBackground(new FindCallback<Post>() {
+    protected void queryPosts(final int page) {
+        Post.query(page, DISPLAY_LIMIT, filterForUser, new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
                 if (e != null){
@@ -96,7 +106,9 @@ public class PostFragment extends Fragment {
                 for(Post post: posts){
                     Log.i(TAG, "Post: " + post.getDescription() + " Username: " + post.getUser().getUsername());
                 }
-                allPosts.clear();
+                if(page == 0) {
+                    adapter.clear();
+                }
                 allPosts.addAll(posts);
                 adapter.notifyDataSetChanged();
             }
