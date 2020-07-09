@@ -41,6 +41,7 @@ public class PostDetailsActivity extends AppCompatActivity {
         tvTimestamp.setText(post.getTimeStamp());
 
 
+
         ParseFile image = post.getImage();
         if (image != null) {
             Glide.with(this).load(post.getImage().getUrl()).into(ivPostPic);
