@@ -98,6 +98,7 @@ public class PostFragment extends Fragment {
                 }
                 allPosts.clear();
                 allPosts.addAll(posts);
+                adapter.notifyDataSetChanged();
             }
         });
     }
