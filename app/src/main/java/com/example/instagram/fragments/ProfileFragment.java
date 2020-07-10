@@ -67,19 +67,29 @@ public class ProfileFragment extends Fragment {
             user = bundle.getParcelable("user");
         }
 
-        tvUsername.setText(ParseUser.getCurrentUser().getUsername());
-        Glide.with(getContext())
-                .load(getResources().getString(R.string.DEFAULT_PROFILE_PIC))
-                .into(ivProfilePic);
-
-
+        tvUsername.setText(user.getUsername());
+        ParseFile image = user.getParseFile("profilePic");
+        if (image == null){
+            Glide.with(getContext())
+                    .load(getResources().getString(R.string.DEFAULT_PROFILE_PIC))
+                    .into(ivProfilePic);
+        } else {
+            Glide.with(getContext())
+                    .load(image.getUrl())
+                    .into(ivProfilePic);
+        }
 
 
         rvUserPosts = view.findViewById(R.id.rvPosts);
 
         userPosts = new ArrayList<>();
         //instantiate the adapter
-        userAdapter = new PostAdapter(getContext(), userPosts);
+        userAdapter = new PostAdapter(getContext(), userPosts, new PostAdapter.onClickListener() {
+            @Override
+            public void onProfilePicAction(int position) {
+                //do nothing
+            }
+        });
 
         //set the adapter on the recycler view
         rvUserPosts.setAdapter(userAdapter);
