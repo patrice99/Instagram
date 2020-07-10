@@ -17,5 +17,6 @@
     <string name="email_address">email address</string>
     <string name="user_profilepic">user ProfilePic</string>
     <string name="DEFAULT_PROFILE_PIC">"https://t4.ftcdn.net/jpg/00/64/67/63/240_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg"</string>
+    <string name="edit_profile">Edit Profile</string>
 
 </resources>
