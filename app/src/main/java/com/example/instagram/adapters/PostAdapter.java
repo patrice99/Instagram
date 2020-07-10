@@ -34,12 +34,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
 
-    public PostAdapter(Context context, List<Post> posts, onClickListener clickListener){
+    public PostAdapter(Context context, List<Post> posts, onClickListener clickListener) {
         this.context = context;
         this.posts = posts;
         this.clickListener = clickListener;
     }
-
 
 
     @NonNull
@@ -62,7 +61,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView tvUsername;
         private TextView tvUsername2;
@@ -78,27 +77,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                //when a post is clicked
-                @Override
-                public void onClick(View view) {
-                    //get post position
-                    int position = getAdapterPosition();
-
-                    //get post at that position
-                    Post post = posts.get(position);
-                    Log.i(PostAdapter.class.getSimpleName(), "Post at Position " + position + "clicked.");
-                    //go to PostDetails Activity
-                    Intent intent = new Intent(context, PostDetailsActivity.class);
-                    //pass info from that post into Details Activity
-                    intent.putExtra("post", post);
-                    context.startActivity(intent);
-
-                }
-            });
+            itemView.setOnClickListener(this);
         }
 
-        public void bind(final Post post){
+        public void bind(final Post post) {
             //bind the post data to the view elements
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
@@ -131,9 +113,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             });
 
 
-
         }
 
+
+        @Override
+        public void onClick(View view) {
+            //get post position
+            int position = getAdapterPosition();
+
+            //get post at that position
+            Post post = posts.get(position);
+            Log.i(PostAdapter.class.getSimpleName(), "Post at Position " + position + "clicked.");
+            //go to PostDetails Activity
+            Intent intent = new Intent(context, PostDetailsActivity.class);
+            //pass info from that post into Details Activity
+            intent.putExtra("post", post);
+            context.startActivity(intent);
+        }
     }
 
     // Clean all elements of the recycler
@@ -147,6 +143,4 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         posts.addAll(list);
         notifyDataSetChanged();
     }
-
-
 }
