@@ -88,8 +88,27 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
 
+        ivProfilePic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePic();
+            }
+        });
+
+        tvChangePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changePic();
+            }
+        });
 
 
+
+
+    }
+
+    private void changePic() {
+        //code for user to select a photo from their gallery or to take a picture
 
     }
 }
