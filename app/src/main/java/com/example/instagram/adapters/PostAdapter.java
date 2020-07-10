@@ -31,6 +31,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     public interface onClickListener {
         void onProfilePicAction(int position);
+        void onUsernameAction(int position);
     }
 
 
@@ -109,6 +110,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     clickListener.onProfilePicAction(getAdapterPosition());
+                }
+            });
+
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onUsernameAction(getAdapterPosition());
+                }
+            });
+
+            tvUsername2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onUsernameAction(getAdapterPosition());
                 }
             });
 
