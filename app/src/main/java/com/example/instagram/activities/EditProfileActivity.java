@@ -11,8 +11,10 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.instagram.R;
+import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class EditProfileActivity extends AppCompatActivity {
     private ParseUser user;
@@ -63,7 +65,17 @@ public class EditProfileActivity extends AppCompatActivity {
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
+                //save all new attributes of user to Parse
+                user.setUsername(etUsername.getText().toString());
+                user.put("name", etName.getText().toString());
+                user.put("bio", etBio.getText().toString());
+                user.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        finish();
+                    }
+                });
+
             }
         });
 
