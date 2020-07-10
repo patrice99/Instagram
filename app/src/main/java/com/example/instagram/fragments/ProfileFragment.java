@@ -92,7 +92,6 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     //When clicked, it launches the EditProfile Activity
-                    
                 }
             });
         } else {
