@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.instagram.R;
 import com.example.instagram.activities.PostDetailsActivity;
+import com.example.instagram.fragments.PostFragment;
 import com.example.instagram.fragments.ProfileFragment;
 import com.example.instagram.models.Post;
 import com.parse.ParseFile;
@@ -28,6 +29,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
     private onClickListener clickListener;
+    String fromWhere;
 
     public interface onClickListener {
         void onProfilePicAction(int position);
@@ -35,17 +37,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
 
-    public PostAdapter(Context context, List<Post> posts, onClickListener clickListener) {
+    public PostAdapter(Context context, List<Post> posts, onClickListener clickListener, String fromWhere) {
         this.context = context;
         this.posts = posts;
         this.clickListener = clickListener;
+        this.fromWhere = fromWhere;
     }
 
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view = null;
+        if (fromWhere.equals(PostFragment.class.getSimpleName())){
+            view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        } else if (fromWhere.equals(ProfileFragment.class.getSimpleName())){
+            view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        }
         return new ViewHolder(view);
     }
 

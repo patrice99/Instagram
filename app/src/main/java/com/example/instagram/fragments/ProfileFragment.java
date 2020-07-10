@@ -95,7 +95,7 @@ public class ProfileFragment extends Fragment {
             public void onUsernameAction(int position) {
                 //do nothing
             }
-        });
+        }, ProfileFragment.class.getSimpleName());
 
         //set the adapter on the recycler view
         rvUserPosts.setAdapter(userAdapter);

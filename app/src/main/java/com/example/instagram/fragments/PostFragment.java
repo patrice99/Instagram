@@ -53,7 +53,7 @@ public class PostFragment extends Fragment {
 
         allPosts = new ArrayList<>();
         //instantiate the adapter
-        adapter = new PostAdapter(getContext(), allPosts, onClickListener);
+        adapter = new PostAdapter(getContext(), allPosts, onClickListener, PostFragment.class.getSimpleName());
 
         //set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
