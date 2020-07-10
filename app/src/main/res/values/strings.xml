@@ -15,4 +15,5 @@
     <string name="dont_have_an_account">Don\'t have an account?</string>
     <string name="sign_up">SIGN UP</string>
     <string name="email_address">email address</string>
+    <string name="user_profilepic">user ProfilePic</string>
 </resources>

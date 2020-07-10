@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.instagram.R;
 import com.example.instagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -20,15 +21,18 @@ import java.util.List;
 
 public class ProfileFragment extends PostFragment {
 
-    public static final String TAG = "ProfileFragment";
 
-    // DRY
-    // dont repeat yourself
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_profile, container, false);
+    }
+
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         filterForUser = ParseUser.getCurrentUser();
-        super.onCreate(savedInstanceState);
+        super.onViewCreated(view, savedInstanceState);
     }
 
     @Override
