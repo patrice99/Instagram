@@ -1,5 +1,6 @@
 package com.example.instagram.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -21,6 +22,8 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.bumptech.glide.Glide;
 import com.example.instagram.EndlessRecyclerViewScrollListener;
 import com.example.instagram.R;
+import com.example.instagram.activities.EditProfileActivity;
+import com.example.instagram.activities.PostDetailsActivity;
 import com.example.instagram.adapters.PostAdapter;
 import com.example.instagram.models.Post;
 import com.parse.FindCallback;
@@ -92,6 +95,10 @@ public class ProfileFragment extends Fragment {
                 @Override
                 public void onClick(View view) {
                     //When clicked, it launches the EditProfile Activity
+                    Intent intent = new Intent(getContext(), EditProfileActivity.class);
+                    //pass info from that post into Details Activity
+                    intent.putExtra("user", user);
+                    getContext().startActivity(intent);
                 }
             });
         } else {
