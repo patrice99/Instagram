@@ -43,11 +43,19 @@ public class EditProfileActivity extends AppCompatActivity {
         btnDone = findViewById(R.id.btnDone);
 
         //bind views with data from user
+        //check to see if user has image
         ParseFile image = user.getParseFile("profilePic");
-        Glide.with(this)
-                .load(image.getUrl())
-                .circleCrop()
-                .into(ivProfilePic);
+        if (image != null){
+            Glide.with(this)
+                    .load(image.getUrl())
+                    .circleCrop()
+                    .into(ivProfilePic);
+        } else {
+            Glide.with(this)
+                    .load(getResources().getString(R.string.DEFAULT_PROFILE_PIC))
+                    .circleCrop()
+                    .into(ivProfilePic);
+        }
 
 
         String name = user.getString("name");

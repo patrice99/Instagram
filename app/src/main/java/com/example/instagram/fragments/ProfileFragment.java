@@ -48,6 +48,7 @@ public class ProfileFragment extends Fragment {
     private TextView tvBio;
     private TextView tvUsername;
     private Button btnEditProfile;
+    private TextView tvName;
 
 
     @Nullable
@@ -62,9 +63,10 @@ public class ProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         ivProfilePic = view.findViewById(R.id.ivProfilePic);
-        tvBio = view.findViewById(R.id.tvUsername);
+        tvBio = view.findViewById(R.id.tvBio);
         tvUsername = view.findViewById(R.id.tvUsername);
         btnEditProfile = view.findViewById(R.id.btnEditProfile);
+        tvName = view.findViewById(R.id.tvName);
 
         //Get the bundle to determine user
         Bundle bundle = this.getArguments();
@@ -86,6 +88,14 @@ public class ProfileFragment extends Fragment {
                     .load(image.getUrl())
                     .circleCrop()
                     .into(ivProfilePic);
+        }
+
+        if (user.getString("name") != null){
+            tvName.setText(user.getString("name"));
+        }
+
+        if (user.getString("bio") != null){
+            tvBio.setText(user.getString("bio"));
         }
 
         if (user == ParseUser.getCurrentUser()) {
