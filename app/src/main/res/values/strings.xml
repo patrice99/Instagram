@@ -22,5 +22,6 @@
     <string name="name">Name</string>
     <string name="bio">Bio</string>
     <string name="usernamecap">Username</string>
+    <string name="done">Done</string>
 
 </resources>
