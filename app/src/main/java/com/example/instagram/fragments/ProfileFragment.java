@@ -73,10 +73,12 @@ public class ProfileFragment extends Fragment {
         if (image == null){
             Glide.with(getContext())
                     .load(getResources().getString(R.string.DEFAULT_PROFILE_PIC))
+                    .circleCrop()
                     .into(ivProfilePic);
         } else {
             Glide.with(getContext())
                     .load(image.getUrl())
+                    .circleCrop()
                     .into(ivProfilePic);
         }
 
