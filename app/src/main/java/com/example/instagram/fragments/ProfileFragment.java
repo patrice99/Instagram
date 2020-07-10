@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -100,8 +101,8 @@ public class ProfileFragment extends Fragment {
         rvUserPosts.setAdapter(userAdapter);
 
         //set the layout manager on the recycler view
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        rvUserPosts.setLayoutManager(linearLayoutManager);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
+        rvUserPosts.setLayoutManager(gridLayoutManager);
         queryPosts(0);
 
         swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
@@ -127,7 +128,7 @@ public class ProfileFragment extends Fragment {
                 android.R.color.holo_red_light);
 
 
-        scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+        scrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 //get the next 20 posts
