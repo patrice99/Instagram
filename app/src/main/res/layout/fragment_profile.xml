@@ -26,9 +26,9 @@
             android:id="@+id/tvUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_below="@+id/tvName"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/ivProfilePic"
             android:textColor="#000000"
             tools:text="username123" />
@@ -45,16 +45,29 @@
 
         <Button
             android:id="@+id/btnEditProfile"
-            android:layout_width="400dp"
-            android:layout_height="45dp"
+            android:layout_width="266dp"
+            android:layout_height="38dp"
             android:layout_below="@+id/tvBio"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/ivProfilePic"
             android:backgroundTint="#FFFFFF"
             android:text="@string/edit_profile"
             android:textAllCaps="false"
             android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="112dp"
+            android:layout_marginTop="16dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            tools:text="Patrice Gill" />
     </RelativeLayout>
 
     <FrameLayout
