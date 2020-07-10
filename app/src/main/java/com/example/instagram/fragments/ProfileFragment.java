@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.example.instagram.EndlessRecyclerViewScrollListener;
 import com.example.instagram.R;
 import com.example.instagram.adapters.PostAdapter;
@@ -37,6 +40,10 @@ public class ProfileFragment extends Fragment {
     private static final int DISPLAY_LIMIT = 20;
     public static final String TAG = ProfileFragment.class.getSimpleName();
 
+    private ImageView ivProfilePic;
+    private TextView tvBio;
+    private TextView tvUsername;
+
 
     @Nullable
     @Override
@@ -49,6 +56,15 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         filterForUser = ParseUser.getCurrentUser();
         super.onViewCreated(view, savedInstanceState);
+
+        ivProfilePic = view.findViewById(R.id.ivProfilePic);
+        tvBio = view.findViewById(R.id.tvUsername);
+        tvUsername = view.findViewById(R.id.tvUsername);
+
+        tvUsername.setText(ParseUser.getCurrentUser().getUsername());
+        Glide.with(getContext())
+                .load(getResources().getString(R.string.DEFAULT_PROFILE_PIC))
+                .into(ivProfilePic);
 
         rvUserPosts = view.findViewById(R.id.rvPosts);
 
