@@ -56,6 +56,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView tvUsername;
         private ImageView ivImage;
         private TextView tvDescription;
+        private ImageView ivProfilePic;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +64,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             itemView.setOnClickListener(new View.OnClickListener() {
                 //when a post is clicked
                 @Override
@@ -92,6 +94,22 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             if (image != null) {
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
             }
+
+            //check if the user has a valid profilePic
+            ParseFile image2 = post.getUser().getParseFile("profilePic");
+            if (image2 != null) {
+                Glide.with(context)
+                        .load(post.getUser().getParseFile("profilePic").getUrl())
+                        .circleCrop()
+                        .into(ivProfilePic);
+            } else {
+                Glide.with(context)
+                        .load(context.getResources().getString(R.string.DEFAULT_PROFILE_PIC))
+                        .circleCrop()
+                        .into(ivProfilePic);
+            }
+
+
 
         }
 
