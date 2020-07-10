@@ -1,5 +1,6 @@
 package com.example.instagram.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -50,7 +53,7 @@ public class PostFragment extends Fragment {
 
         allPosts = new ArrayList<>();
         //instantiate the adapter
-        adapter = new PostAdapter(getContext(), allPosts);
+        adapter = new PostAdapter(getContext(), allPosts, onClickListener);
 
         //set the adapter on the recycler view
         rvPosts.setAdapter(adapter);
@@ -114,4 +117,26 @@ public class PostFragment extends Fragment {
             }
         });
     }
+
+    PostAdapter.onClickListener onClickListener = new PostAdapter.onClickListener() {
+        @Override
+        public void onProfilePicAction(int position) {
+            //get user of that specific post
+            ParseUser user = allPosts.get(position).getUser();
+
+            //pass this info to profile fragment
+            Fragment fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("user", user);
+            fragment.setArguments(bundle);
+
+            //Go from this fragment to profile fragment
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.flContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+
+        }
+    };
 }
