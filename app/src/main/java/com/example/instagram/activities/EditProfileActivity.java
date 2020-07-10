@@ -51,6 +51,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     .circleCrop()
                     .into(ivProfilePic);
         } else {
+            tvChangePhoto.setText("Add Profile Pic");
             Glide.with(this)
                     .load(getResources().getString(R.string.DEFAULT_PROFILE_PIC))
                     .circleCrop()
