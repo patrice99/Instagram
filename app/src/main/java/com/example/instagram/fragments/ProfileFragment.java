@@ -61,6 +61,7 @@ public class ProfileFragment extends Fragment {
         ivProfilePic = view.findViewById(R.id.ivProfilePic);
         tvBio = view.findViewById(R.id.tvUsername);
         tvUsername = view.findViewById(R.id.tvUsername);
+        btnEditProfile = view.findViewById(R.id.btnEditProfile);
 
         //Get the bundle to determine user
         Bundle bundle = this.getArguments();
