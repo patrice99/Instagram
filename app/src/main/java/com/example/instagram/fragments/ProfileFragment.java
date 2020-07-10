@@ -89,6 +89,11 @@ public class ProfileFragment extends Fragment {
             public void onProfilePicAction(int position) {
                 //do nothing
             }
+
+            @Override
+            public void onUsernameAction(int position) {
+                //do nothing
+            }
         });
 
         //set the adapter on the recycler view

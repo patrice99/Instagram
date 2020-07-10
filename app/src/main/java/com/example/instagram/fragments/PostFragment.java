@@ -139,5 +139,24 @@ public class PostFragment extends Fragment {
 
 
         }
+
+        @Override
+        public void onUsernameAction(int position) {
+            //get user of that specific post
+            ParseUser user = allPosts.get(position).getUser();
+
+            //pass this info to profile fragment
+            Fragment fragment = new ProfileFragment();
+            Bundle bundle = new Bundle();
+            bundle.putParcelable("user", user);
+            fragment.setArguments(bundle);
+
+            //Go from this fragment to profile fragment
+            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.flContainer, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
     };
 }
