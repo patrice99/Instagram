@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +44,7 @@ public class ProfileFragment extends Fragment {
     private ImageView ivProfilePic;
     private TextView tvBio;
     private TextView tvUsername;
+    private Button btnEditProfile;
 
 
     @Nullable
@@ -80,6 +82,13 @@ public class ProfileFragment extends Fragment {
                     .load(image.getUrl())
                     .circleCrop()
                     .into(ivProfilePic);
+        }
+
+        if (user == ParseUser.getCurrentUser()){
+                btnEditProfile.setVisibility(View.VISIBLE);
+                //some EditProfile functionality
+            } else {
+            btnEditProfile.setVisibility(View.GONE);
         }
 
 
