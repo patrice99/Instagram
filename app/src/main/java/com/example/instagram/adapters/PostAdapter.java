@@ -52,7 +52,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         if (fromWhere.equals(PostFragment.class.getSimpleName())){
             view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
         } else if (fromWhere.equals(ProfileFragment.class.getSimpleName())){
-            view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+            view = LayoutInflater.from(context).inflate(R.layout.item_user_post, parent, false);
         }
         return new ViewHolder(view);
     }
@@ -91,53 +91,61 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         public void bind(final Post post) {
             //bind the post data to the view elements
-            tvDescription.setText(post.getDescription());
-            tvUsername.setText(post.getUser().getUsername());
-            tvUsername2.setText(post.getUser().getUsername());
-            //check if the post has a valid image
-            ParseFile image = post.getImage();
-            if (image != null) {
-                Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
+            if (tvDescription != null) {
+                tvDescription.setText(post.getDescription());
+            }
+            if (tvUsername != null) {
+                tvUsername.setText(post.getUser().getUsername());
+                tvUsername.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        clickListener.onUsernameAction(getAdapterPosition());
+                    }
+                });
             }
 
-            //check if the user has a valid profilePic
-            ParseFile image2 = post.getUser().getParseFile("profilePic");
-            if (image2 != null) {
-                Glide.with(context)
-                        .load(post.getUser().getParseFile("profilePic").getUrl())
-                        .circleCrop()
-                        .into(ivProfilePic);
-            } else {
-                Glide.with(context)
-                        .load(context.getResources().getString(R.string.DEFAULT_PROFILE_PIC))
-                        .circleCrop()
-                        .into(ivProfilePic);
+            if (tvUsername2 != null){
+                tvUsername2.setText(post.getUser().getUsername());
+                tvUsername2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        clickListener.onUsernameAction(getAdapterPosition());
+                    }
+                });
+            }
+            if (ivImage != null){
+                //check if the post has a valid image
+                ParseFile image = post.getImage();
+                if (image != null) {
+                    Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
+                }
             }
 
-            ivProfilePic.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickListener.onProfilePicAction(getAdapterPosition());
+            if (ivProfilePic != null) {
+                //check if the user has a valid profilePic
+                ParseFile image2 = post.getUser().getParseFile("profilePic");
+                if (image2 != null) {
+                    Glide.with(context)
+                            .load(post.getUser().getParseFile("profilePic").getUrl())
+                            .circleCrop()
+                            .into(ivProfilePic);
+                } else {
+                    Glide.with(context)
+                            .load(context.getResources().getString(R.string.DEFAULT_PROFILE_PIC))
+                            .circleCrop()
+                            .into(ivProfilePic);
                 }
-            });
 
-            tvUsername.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickListener.onUsernameAction(getAdapterPosition());
-                }
-            });
+                ivProfilePic.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        clickListener.onProfilePicAction(getAdapterPosition());
+                    }
+                });
 
-            tvUsername2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickListener.onUsernameAction(getAdapterPosition());
-                }
-            });
-
+            }
 
         }
-
 
         @Override
         public void onClick(View view) {
