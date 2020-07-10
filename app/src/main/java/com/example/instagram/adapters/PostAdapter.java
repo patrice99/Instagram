@@ -62,7 +62,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             //find the views
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivImage);
-            tvDescription = itemView.findViewById(R.id.tvUsername);
+            tvDescription = itemView.findViewById(R.id.tvDescription);
             itemView.setOnClickListener(new View.OnClickListener() {
                 //when a post is clicked
                 @Override
