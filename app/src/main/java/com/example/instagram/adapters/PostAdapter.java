@@ -48,12 +48,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = null;
-        if (fromWhere.equals(PostFragment.class.getSimpleName())){
-            view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
-        } else if (fromWhere.equals(ProfileFragment.class.getSimpleName())){
-            view = LayoutInflater.from(context).inflate(R.layout.item_user_post, parent, false);
-        }
+        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
         return new ViewHolder(view);
     }
 
@@ -91,59 +86,68 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
         public void bind(final Post post) {
             //bind the post data to the view elements
-            if (tvDescription != null) {
-                tvDescription.setText(post.getDescription());
+            if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
+                tvDescription.setVisibility(View.GONE);
             }
-            if (tvUsername != null) {
-                tvUsername.setText(post.getUser().getUsername());
-                tvUsername.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        clickListener.onUsernameAction(getAdapterPosition());
-                    }
-                });
-            }
+            tvDescription.setText(post.getDescription());
 
-            if (tvUsername2 != null){
-                tvUsername2.setText(post.getUser().getUsername());
-                tvUsername2.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        clickListener.onUsernameAction(getAdapterPosition());
-                    }
-                });
+            if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
+                tvUsername.setVisibility(View.GONE);
             }
-            if (ivImage != null){
-                //check if the post has a valid image
-                ParseFile image = post.getImage();
-                if (image != null) {
-                    Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
+            tvUsername.setText(post.getUser().getUsername());
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onUsernameAction(getAdapterPosition());
                 }
+            });
+
+            if (fromWhere.equals(ProfileFragment.class.getSimpleName())){
+                tvUsername2.setVisibility(View.GONE);
             }
 
-            if (ivProfilePic != null) {
-                //check if the user has a valid profilePic
-                ParseFile image2 = post.getUser().getParseFile("profilePic");
-                if (image2 != null) {
-                    Glide.with(context)
-                            .load(post.getUser().getParseFile("profilePic").getUrl())
-                            .circleCrop()
-                            .into(ivProfilePic);
-                } else {
-                    Glide.with(context)
-                            .load(context.getResources().getString(R.string.DEFAULT_PROFILE_PIC))
-                            .circleCrop()
-                            .into(ivProfilePic);
+            tvUsername2.setText(post.getUser().getUsername());
+            tvUsername2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onUsernameAction(getAdapterPosition());
                 }
+            });
 
-                ivProfilePic.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        clickListener.onProfilePicAction(getAdapterPosition());
-                    }
-                });
-
+            if (fromWhere.equals(ProfileFragment.class.getSimpleName())){
+                ivImage.getLayoutParams().height = 350;
+                ivImage.getLayoutParams().width = 350;
             }
+            //check if the post has a valid image
+            ParseFile image = post.getImage();
+            if (image != null) {
+                Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
+            }
+
+            if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
+                ivProfilePic.setVisibility(View.GONE);
+            }
+            //check if the user has a valid profilePic
+            ParseFile image2 = post.getUser().getParseFile("profilePic");
+            if (image2 != null) {
+                Glide.with(context)
+                        .load(post.getUser().getParseFile("profilePic").getUrl())
+                        .circleCrop()
+                        .into(ivProfilePic);
+            } else {
+                Glide.with(context)
+                        .load(context.getResources().getString(R.string.DEFAULT_PROFILE_PIC))
+                        .circleCrop()
+                        .into(ivProfilePic);
+            }
+
+            ivProfilePic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onProfilePicAction(getAdapterPosition());
+                }
+            });
+
 
         }
 

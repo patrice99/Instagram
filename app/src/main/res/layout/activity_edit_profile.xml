@@ -1,9 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.EditProfileActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/ivProfilePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:contentDescription="@string/profile"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvChangePhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivProfilePic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/change_profile_photo"
+        android:textColor="#2196F3"
+        android:textStyle="bold" />
+
+    <TableLayout
+        android:layout_width="365dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvChangePhoto"
+        android:layout_alignParentStart="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="40dp">
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dip"
+                android:text="@string/name" />
+
+            <EditText
+                android:id="@+id/etName"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:gravity="right"
+                android:inputType="textShortMessage"
+                android:padding="5dip" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp">
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dip"
+                android:text="@string/usernamecap" />
+
+            <EditText
+                android:id="@+id/etUsername"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:gravity="right"
+                android:inputType="textPhonetic"
+                android:padding="5dip" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="40dp">
+
+
+            <TextView
+                android:layout_column="1"
+                android:padding="5dip"
+                android:text="@string/bio" />
+
+            <EditText
+                android:id="@+id/etBio"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:gravity="right"
+                android:inputType="textLongMessage"
+                android:padding="5dip" />
+        </TableRow>
+
+    </TableLayout>
+
+</RelativeLayout>
