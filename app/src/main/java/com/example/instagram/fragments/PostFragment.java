@@ -137,6 +137,7 @@ public class PostFragment extends Fragment {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
+
         }
     };
 }
