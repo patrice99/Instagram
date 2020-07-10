@@ -3,6 +3,8 @@ package com.example.instagram.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText etName;
     private EditText etUsername;
     private EditText etBio;
+    private Button btnDone;
 
 
     @Override
@@ -35,6 +38,7 @@ public class EditProfileActivity extends AppCompatActivity {
         etName = findViewById(R.id.etName);
         etUsername = findViewById(R.id.etUsername);
         etBio = findViewById(R.id.etBio);
+        btnDone = findViewById(R.id.btnDone);
 
         //bind views with data from user
         ParseFile image = user.getParseFile("profilePic");
@@ -55,6 +59,15 @@ public class EditProfileActivity extends AppCompatActivity {
         if (bio != null){
             etBio.setText(bio);
         }
+
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+
+
 
 
     }
