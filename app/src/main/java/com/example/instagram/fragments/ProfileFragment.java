@@ -85,10 +85,17 @@ public class ProfileFragment extends Fragment {
                     .into(ivProfilePic);
         }
 
-        if (user == ParseUser.getCurrentUser()){
-                btnEditProfile.setVisibility(View.VISIBLE);
-                //some EditProfile functionality
-            } else {
+        if (user == ParseUser.getCurrentUser()) {
+            btnEditProfile.setVisibility(View.VISIBLE);
+            //some EditProfile functionality
+            btnEditProfile.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //When clicked, it launches the EditProfile Activity
+                    
+                }
+            });
+        } else {
             btnEditProfile.setVisibility(View.GONE);
         }
 
