@@ -31,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProfileFragment extends Fragment {
-    private ParseUser filterForUser;
+    private ParseUser user;
     private RecyclerView rvUserPosts;
     private List<Post> userPosts;
     private PostAdapter userAdapter;
@@ -39,7 +39,6 @@ public class ProfileFragment extends Fragment {
     private EndlessRecyclerViewScrollListener scrollListener;
     private static final int DISPLAY_LIMIT = 20;
     public static final String TAG = ProfileFragment.class.getSimpleName();
-
     private ImageView ivProfilePic;
     private TextView tvBio;
     private TextView tvUsername;
@@ -54,17 +53,27 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        filterForUser = ParseUser.getCurrentUser();
         super.onViewCreated(view, savedInstanceState);
 
         ivProfilePic = view.findViewById(R.id.ivProfilePic);
         tvBio = view.findViewById(R.id.tvUsername);
         tvUsername = view.findViewById(R.id.tvUsername);
 
+        //Get the bundle to determine user
+        Bundle bundle = this.getArguments();
+        if (bundle == null){
+            user = ParseUser.getCurrentUser();
+        } else {
+            user = bundle.getParcelable("user");
+        }
+
         tvUsername.setText(ParseUser.getCurrentUser().getUsername());
         Glide.with(getContext())
                 .load(getResources().getString(R.string.DEFAULT_PROFILE_PIC))
                 .into(ivProfilePic);
+
+
+
 
         rvUserPosts = view.findViewById(R.id.rvPosts);
 
@@ -115,7 +124,7 @@ public class ProfileFragment extends Fragment {
 
     //Take the posts we have and hand it over to the adapter
     protected void queryPosts(final int page) {
-        Post.query(page, DISPLAY_LIMIT, filterForUser, new FindCallback<Post>() {
+        Post.query(page, DISPLAY_LIMIT, user, new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {
                 if (e != null){

@@ -2,6 +2,7 @@ package com.example.instagram.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,11 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.instagram.R;
 import com.example.instagram.activities.PostDetailsActivity;
+import com.example.instagram.fragments.ProfileFragment;
 import com.example.instagram.models.Post;
 import com.parse.ParseFile;
 
@@ -23,10 +27,17 @@ import java.util.List;
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
+    private onClickListener clickListener;
 
-    public PostAdapter(Context context, List<Post> posts){
+    public interface onClickListener {
+        void onProfilePicAction(int position);
+    }
+
+
+    public PostAdapter(Context context, List<Post> posts, onClickListener clickListener){
         this.context = context;
         this.posts = posts;
+        this.clickListener = clickListener;
     }
 
 
@@ -87,7 +98,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             });
         }
 
-        public void bind(Post post){
+        public void bind(final Post post){
             //bind the post data to the view elements
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
@@ -111,6 +122,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                         .circleCrop()
                         .into(ivProfilePic);
             }
+
+            ivProfilePic.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onProfilePicAction(getAdapterPosition());
+                }
+            });
 
 
 
