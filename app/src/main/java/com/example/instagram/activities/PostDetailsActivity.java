@@ -78,7 +78,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     .into(ivProfilePic);
         }
 
-        if (isliked == true){
+        if (isliked){
             Glide.with(this)
                     .load(R.drawable.ufi_heart_active)
                     .into(ivLike);

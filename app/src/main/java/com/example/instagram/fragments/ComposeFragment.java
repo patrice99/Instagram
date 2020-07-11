@@ -27,15 +27,12 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.instagram.R;
 import com.example.instagram.models.Post;
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
-import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 

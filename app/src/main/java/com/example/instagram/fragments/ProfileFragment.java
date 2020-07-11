@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -23,13 +22,11 @@ import com.bumptech.glide.Glide;
 import com.example.instagram.EndlessRecyclerViewScrollListener;
 import com.example.instagram.R;
 import com.example.instagram.activities.EditProfileActivity;
-import com.example.instagram.activities.PostDetailsActivity;
 import com.example.instagram.adapters.PostAdapter;
 import com.example.instagram.models.Post;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
@@ -150,7 +147,7 @@ public class ProfileFragment extends Fragment {
         rvUserPosts.setLayoutManager(gridLayoutManager);
         queryPosts(0);
 
-        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer = view.findViewById(R.id.swipeContainer);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

@@ -51,8 +51,7 @@ public class Post extends ParseObject {
     public String getTimeStamp() {
         Date date = getCreatedAt();
         SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy hh:mm aa");
-        String strDate= formatter.format(date);
-        return strDate;
+        return formatter.format(date);
     }
 
     public static void query(int page, int limit, ParseUser filterForUser, FindCallback callback){
