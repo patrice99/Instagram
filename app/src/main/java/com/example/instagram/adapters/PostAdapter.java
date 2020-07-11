@@ -159,6 +159,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     clickListener.onLikeAction(getAdapterPosition());
+                    //change the color of the heart
+                    Glide.with(context).load(context.getDrawable(R.drawable.ufi_heart_active)).into(ivLike);
+
                 }
             });
 
