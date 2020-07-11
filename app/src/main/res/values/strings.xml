@@ -26,5 +26,7 @@
     <string name="log_out">Log out</string>
     <string name="post">Post</string>
     <string name="camera">camera</string>
+    <string name="like_button">like Button</string>
+    <string name="comment_button">comment button</string>
 
 </resources>
