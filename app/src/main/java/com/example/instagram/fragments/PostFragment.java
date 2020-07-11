@@ -158,5 +158,20 @@ public class PostFragment extends Fragment {
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }
+
+        @Override
+        public void onLikeAction(int position) {
+            //update likes count in Post class in Parse
+            Post post = allPosts.get(position);
+            int likes = (int) post.getNumber("likes");
+            likes++;
+            post.put("likes", likes);
+            post.saveInBackground();
+        }
+
+        @Override
+        public void onCommentAction(int position) {
+
+        }
     };
 }
