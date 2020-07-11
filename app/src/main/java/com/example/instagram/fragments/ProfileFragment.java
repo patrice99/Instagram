@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
-import com.example.instagram.EndlessRecyclerViewScrollListener;
+import com.example.instagram.utils.EndlessRecyclerViewScrollListener;
 import com.example.instagram.R;
 import com.example.instagram.activities.EditProfileActivity;
 import com.example.instagram.adapters.PostAdapter;

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.instagram.EndlessRecyclerViewScrollListener;
+import com.example.instagram.utils.EndlessRecyclerViewScrollListener;
 import com.example.instagram.R;
 import com.example.instagram.adapters.PostAdapter;
 import com.example.instagram.models.Post;
