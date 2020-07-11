@@ -3,6 +3,7 @@ package com.example.instagram.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +21,6 @@ public class PostDetailsActivity extends AppCompatActivity {
     private TextView tvTimestamp;
     private ImageView ivProfilePic;
     private ImageView ivLike;
-    private ImageView ivComment;
     private boolean isliked;
     private TextView tvNumLikes;
 
@@ -43,7 +43,6 @@ public class PostDetailsActivity extends AppCompatActivity {
         tvTimestamp = findViewById(R.id.tvTimestamp);
         ivProfilePic = findViewById(R.id.ivProfilePic);
         ivLike = findViewById(R.id.ivLike);
-        ivComment = findViewById(R.id.ivComment);
         tvNumLikes = findViewById(R.id.tvNumLikes);
 
         tvUsername.setText(post.getUser().getUsername());
@@ -84,6 +83,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     .load(R.drawable.ufi_heart_active)
                     .into(ivLike);
         }
+        
 
 
 
