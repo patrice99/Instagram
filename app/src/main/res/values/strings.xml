@@ -23,5 +23,6 @@
     <string name="bio">Bio</string>
     <string name="usernamecap">Username</string>
     <string name="done">Done</string>
+    <string name="log_out">Log out</string>
 
 </resources>

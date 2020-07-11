@@ -117,4 +117,16 @@
         android:text="@string/done"
         android:textColor="#2196F3" />
 
+    <Button
+        android:id="@+id/btnLogOut"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/btnDone"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/log_out"
+        android:textColor="#FF0000"
+        android:textStyle="bold" />
+
 </RelativeLayout>
