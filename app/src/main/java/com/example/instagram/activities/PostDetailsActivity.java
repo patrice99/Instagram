@@ -83,7 +83,7 @@ public class PostDetailsActivity extends AppCompatActivity {
                     .load(R.drawable.ufi_heart_active)
                     .into(ivLike);
         }
-        
+
 
 
 
