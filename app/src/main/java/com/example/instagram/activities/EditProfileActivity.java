@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.instagram.R;
+import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseUser;
@@ -33,6 +34,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etBio;
     private Button btnDone;
+    private Button btnLogOut;
     public final static int PICK_PHOTO_CODE = 1046;
 
 
@@ -52,6 +54,7 @@ public class EditProfileActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.etUsername);
         etBio = findViewById(R.id.etBio);
         btnDone = findViewById(R.id.btnDone);
+        btnLogOut = findViewById(R.id.btnLogOut);
 
         //bind views with data from user
         //check to see if user has image
@@ -110,6 +113,21 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 onChoosePhoto();
+            }
+        });
+
+        btnLogOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //log out user
+                ParseUser.logOutInBackground(new LogOutCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        //go to LoginPage
+                        Intent intent = new Intent(EditProfileActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
             }
         });
 
