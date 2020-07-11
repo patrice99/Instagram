@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 fragmentManager
                         .beginTransaction()
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .setCustomAnimations(R.animator.slide_up, 0, 0, R.animator.slide_down)
                         .replace(R.id.flContainer, fragment)
                         .commit();
                 return true;
