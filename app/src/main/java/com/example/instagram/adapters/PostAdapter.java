@@ -73,6 +73,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView tvDescription;
         private ImageView ivProfilePic;
         private TextView tvRelTimeStamp;
+        private ImageView ivLike;
+        private ImageView ivComment;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +85,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             tvDescription = itemView.findViewById(R.id.tvDescription);
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
             tvRelTimeStamp = itemView.findViewById(R.id.tvRelTimeStamp);
+            ivLike = itemView.findViewById(R.id.ivLike);
+            ivComment = itemView.findViewById(R.id.ivComment);
+
             itemView.setOnClickListener(this);
         }
 
@@ -90,51 +95,28 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             //bind the post data to the view elements
             if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
                 tvDescription.setVisibility(View.GONE);
-            }
-            tvDescription.setText(post.getDescription());
-
-            if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
                 tvRelTimeStamp.setVisibility(View.GONE);
-            }
-            tvRelTimeStamp.setText(post.getRelativeTimeAgo());
-
-
-            if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
                 tvUsername.setVisibility(View.GONE);
-            }
-            tvUsername.setText(post.getUser().getUsername());
-            tvUsername.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickListener.onUsernameAction(getAdapterPosition());
-                }
-            });
-
-            if (fromWhere.equals(ProfileFragment.class.getSimpleName())){
                 tvUsername2.setVisibility(View.GONE);
-            }
-
-            tvUsername2.setText(post.getUser().getUsername());
-            tvUsername2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickListener.onUsernameAction(getAdapterPosition());
-                }
-            });
-
-            if (fromWhere.equals(ProfileFragment.class.getSimpleName())){
                 ivImage.getLayoutParams().height = 350;
                 ivImage.getLayoutParams().width = 350;
+                ivProfilePic.setVisibility(View.GONE);
+                ivLike.setVisibility(View.GONE);
+                ivComment.setVisibility(View.GONE);
             }
+
+            //bind Data
+            tvDescription.setText(post.getDescription());
+            tvRelTimeStamp.setText(post.getRelativeTimeAgo());
+            tvUsername.setText(post.getUser().getUsername());
+            tvUsername2.setText(post.getUser().getUsername());
+
             //check if the post has a valid image
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(post.getImage().getUrl()).into(ivImage);
             }
 
-            if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
-                ivProfilePic.setVisibility(View.GONE);
-            }
             //check if the user has a valid profilePic
             ParseFile image2 = post.getUser().getParseFile("profilePic");
             if (image2 != null) {
@@ -148,6 +130,21 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                         .circleCrop()
                         .into(ivProfilePic);
             }
+
+
+            //Set onClickListeners
+            tvUsername.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onUsernameAction(getAdapterPosition());
+                }
+            });
+            tvUsername2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    clickListener.onUsernameAction(getAdapterPosition());
+                }
+            });
 
             ivProfilePic.setOnClickListener(new View.OnClickListener() {
                 @Override
