@@ -44,7 +44,6 @@
         android:layout_below="@+id/ivImage"
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="25dp"
         android:layout_toEndOf="@+id/tvUsername2"
         android:textColor="#000000"
         tools:text="my headshot" />
@@ -78,7 +77,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="false"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="-15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="25dp"
         tools:text="timeStamp" />
 
 </RelativeLayout>
