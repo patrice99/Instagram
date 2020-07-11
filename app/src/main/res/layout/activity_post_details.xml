@@ -33,10 +33,10 @@
         android:id="@+id/tvUsername2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPostPic"
+        android:layout_below="@+id/ivLike"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:textColor="#000000"
         android:textStyle="bold"
         tools:text="username123" />
@@ -45,11 +45,33 @@
         android:id="@+id/tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ivPostPic"
+        android:layout_below="@+id/ivComment"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/tvUsername2"
         tools:text="Here is my caption" />
+
+    <ImageView
+        android:id="@+id/ivLike"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivPostPic"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:background="#00FFFFFF"
+        android:contentDescription="@string/like_button"
+        app:srcCompat="@drawable/ufi_heart" />
+
+    <ImageView
+        android:id="@+id/ivComment"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ivPostPic"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/ivLike"
+        android:contentDescription="@string/comment_button"
+        app:srcCompat="@drawable/ufi_comment" />
 
     <TextView
         android:id="@+id/tvTimestamp"
