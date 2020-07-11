@@ -130,6 +130,16 @@ public class ProfileFragment extends Fragment {
             public void onUsernameAction(int position) {
                 //do nothing
             }
+
+            @Override
+            public void onLikeAction(int position) {
+                //do nothing
+            }
+
+            @Override
+            public void onCommentAction(int position) {
+                //do nothing
+            }
         }, ProfileFragment.class.getSimpleName());
 
         //set the adapter on the recycler view
