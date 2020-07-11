@@ -22,6 +22,7 @@ public class PostDetailsActivity extends AppCompatActivity {
     private ImageView ivLike;
     private ImageView ivComment;
     private boolean isliked;
+    private TextView tvNumLikes;
 
 
     @Override
@@ -43,11 +44,19 @@ public class PostDetailsActivity extends AppCompatActivity {
         ivProfilePic = findViewById(R.id.ivProfilePic);
         ivLike = findViewById(R.id.ivLike);
         ivComment = findViewById(R.id.ivComment);
+        tvNumLikes = findViewById(R.id.tvNumLikes);
 
         tvUsername.setText(post.getUser().getUsername());
         tvUsername2.setText(post.getUser().getUsername());
         tvDescription.setText(post.getDescription());
         tvTimestamp.setText(post.getTimeStamp());
+        int likes = (int) post.getNumber("likes");
+        String likeStr = String.valueOf(likes);
+        String addS = "";
+        if (likes != 1){
+            addS += "s";
+        }
+        tvNumLikes.setText(likeStr + " like" + addS);
 
 
 
@@ -75,7 +84,6 @@ public class PostDetailsActivity extends AppCompatActivity {
                     .load(R.drawable.ufi_heart_active)
                     .into(ivLike);
         }
-
 
 
 
