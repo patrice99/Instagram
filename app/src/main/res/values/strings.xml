@@ -25,5 +25,6 @@
     <string name="done">Done</string>
     <string name="log_out">Log out</string>
     <string name="post">Post</string>
+    <string name="camera">camera</string>
 
 </resources>
