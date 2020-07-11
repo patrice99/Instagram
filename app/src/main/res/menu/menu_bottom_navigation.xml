@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/instagram_home_outline_24"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        tools:ignore="MenuTitle" />
     <item
         android:id="@+id/action_compose"
         android:icon="@drawable/instagram_new_post_outline_24"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        tools:ignore="MenuTitle" />
     <item
         android:id="@+id/action_profile"
         android:icon="@drawable/instagram_user_outline_24"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        tools:ignore="MenuTitle" />
 </menu>
