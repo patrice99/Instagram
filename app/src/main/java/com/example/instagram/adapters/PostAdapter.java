@@ -72,6 +72,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private ImageView ivImage;
         private TextView tvDescription;
         private ImageView ivProfilePic;
+        private TextView tvRelTimeStamp;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,6 +82,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             ivProfilePic = itemView.findViewById(R.id.ivProfilePic);
+            tvRelTimeStamp = itemView.findViewById(R.id.tvRelTimeStamp);
             itemView.setOnClickListener(this);
         }
 
@@ -90,6 +92,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 tvDescription.setVisibility(View.GONE);
             }
             tvDescription.setText(post.getDescription());
+
+            if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
+                tvRelTimeStamp.setVisibility(View.GONE);
+            }
+            tvRelTimeStamp.setText(post.getRelativeTimeAgo());
+
 
             if (fromWhere.equals(ProfileFragment.class.getSimpleName())) {
                 tvUsername.setVisibility(View.GONE);
