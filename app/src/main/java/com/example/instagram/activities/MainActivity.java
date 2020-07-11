@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.instagram.R;
 import com.example.instagram.fragments.ComposeFragment;
@@ -54,7 +55,11 @@ public class MainActivity extends AppCompatActivity {
                         fragment = new ProfileFragment();
                         break;
                 }
-                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                fragmentManager
+                        .beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        .replace(R.id.flContainer, fragment)
+                        .commit();
                 return true;
             }
         });
