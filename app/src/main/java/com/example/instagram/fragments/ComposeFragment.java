@@ -170,12 +170,12 @@ public class ComposeFragment extends Fragment {
                 if (e != null){
                     Log.e(TAG, "Error while saving", e);
                     Toast.makeText(getContext(), "Error while saving", Toast.LENGTH_SHORT).show();
-                    pb.setVisibility(ProgressBar.INVISIBLE);
                 }
 
                 Log.i(TAG, "Post save was successful!");
                 etDescription.setText(""); // clear out edit text so user does not save the same post twice
                 ivPostImage.setImageResource(0); //clear the image view
+                pb.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }
