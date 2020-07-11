@@ -56,7 +56,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_below="@+id/ivPostPic"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="10dp"
         android:background="#00FFFFFF"
         android:contentDescription="@string/like_button"
@@ -80,7 +80,7 @@
         android:layout_below="@+id/tvDescription"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         tools:text="timestamp" />
 
     <ImageView

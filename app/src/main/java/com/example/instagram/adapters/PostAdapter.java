@@ -77,6 +77,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView tvRelTimeStamp;
         private ImageView ivLike;
         private ImageView ivComment;
+        private boolean isLiked = false;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -161,6 +162,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                     clickListener.onLikeAction(getAdapterPosition());
                     //change the color of the heart
                     Glide.with(context).load(context.getDrawable(R.drawable.ufi_heart_active)).into(ivLike);
+                    isLiked = true;
 
                 }
             });
@@ -187,6 +189,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             Intent intent = new Intent(context, PostDetailsActivity.class);
             //pass info from that post into Details Activity
             intent.putExtra("post", post);
+            intent.putExtra("isLiked", isLiked);
             context.startActivity(intent);
         }
     }

@@ -19,6 +19,9 @@ public class PostDetailsActivity extends AppCompatActivity {
     private TextView tvDescription;
     private TextView tvTimestamp;
     private ImageView ivProfilePic;
+    private ImageView ivLike;
+    private ImageView ivComment;
+    private boolean isliked;
 
 
     @Override
@@ -28,6 +31,8 @@ public class PostDetailsActivity extends AppCompatActivity {
 
         //get the intent and post passed in
         post = getIntent().getParcelableExtra("post");
+        isliked = getIntent().getBooleanExtra("isLiked", false);
+
 
         //define Views
         ivPostPic = findViewById(R.id.ivPostPic);
@@ -36,6 +41,8 @@ public class PostDetailsActivity extends AppCompatActivity {
         tvDescription= findViewById(R.id.tvDescription);
         tvTimestamp = findViewById(R.id.tvTimestamp);
         ivProfilePic = findViewById(R.id.ivProfilePic);
+        ivLike = findViewById(R.id.ivLike);
+        ivComment = findViewById(R.id.ivComment);
 
         tvUsername.setText(post.getUser().getUsername());
         tvUsername2.setText(post.getUser().getUsername());
@@ -62,6 +69,14 @@ public class PostDetailsActivity extends AppCompatActivity {
                     .circleCrop()
                     .into(ivProfilePic);
         }
+
+        if (isliked == true){
+            Glide.with(this)
+                    .load(R.drawable.ufi_heart_active)
+                    .into(ivLike);
+        }
+
+
 
 
 
