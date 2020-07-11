@@ -68,6 +68,8 @@ public class ComposeFragment extends Fragment {
         btnCaptureImage = view.findViewById(R.id.btnCaptureImage);
         ivPostImage = view.findViewById(R.id.ivPostImage);
         btnSubmit = view.findViewById(R.id.btnSubmit);
+        pb = view.findViewById(R.id.pbLoading);
+
 
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -161,12 +163,14 @@ public class ComposeFragment extends Fragment {
         post.setImage(new ParseFile(photoFile));
         post.setUser(currentUser);
         //post.setImage();
+        pb.setVisibility(ProgressBar.VISIBLE);
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null){
                     Log.e(TAG, "Error while saving", e);
                     Toast.makeText(getContext(), "Error while saving", Toast.LENGTH_SHORT).show();
+                    pb.setVisibility(ProgressBar.INVISIBLE);
                 }
 
                 Log.i(TAG, "Post save was successful!");
